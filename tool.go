@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"os"
 	"time"
 )
 
@@ -96,4 +97,69 @@ func solve(s State) (bool, []int) {
 	}
 
 	return false, []int{}
+}
+
+// 写文件
+func writeFile() {
+	f, _ := os.OpenFile("solve.txt", os.O_WRONLY|os.O_CREATE|os.O_SYNC|os.O_TRUNC, 0755)
+	os.Stdout = f
+}
+
+// 打印求解过程
+func printSteps(s State, steps []int) {
+	start := State{
+		board: s.board,
+		block: s.block,
+	}
+
+	for _, step := range steps {
+		if step == NONE {
+			break
+		}
+		nBlock := start.block + step
+		start.board[start.block], start.board[nBlock] = start.board[nBlock], 0
+		start.block = nBlock
+		start.Show()
+	}
+}
+
+// 命令行模式
+func runShell() {
+	writeFile()
+	start := time.Now()
+
+	s := generate()
+
+	var (
+		res string
+		stp []int
+	)
+	s.Show()
+	if s.SolveAble() {
+		fmt.Println(s.board)
+		res, stp = s.Solution()
+		fmt.Println("该 puzzle 有解")
+		fmt.Printf("解为: %v\n", res)
+	} else {
+		fmt.Println("该 puzzle 无解")
+		s.Adjust()
+		s.Show()
+		if s.SolveAble() {
+			fmt.Println("该 puzzle 有解了")
+			fmt.Println(s.board)
+			res, stp = s.Solution()
+			fmt.Printf("解为: %v\n", res)
+		} else {
+			fmt.Println("该 puzzle 依然无解")
+		}
+	}
+	cost := time.Since(start)
+	fmt.Printf("\ncost=[%s]\n", cost)
+	printSteps(s, stp)
+}
+
+// 服务端模式
+func runServer() {
+	//todo
+	fmt.Println("Come soon!")
 }

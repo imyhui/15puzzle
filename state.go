@@ -143,13 +143,13 @@ func (s State) NextState(step int) State {
 }
 
 // 对当前状态求解
-func (s State) Solution() string {
+func (s State) Solution() (string, []int) {
 	var result string
 	if ok, steps := solve(s); ok {
 		for _, step := range steps {
 			result += move[step]
 		}
-		return result
+		return result, steps
 	}
-	return ""
+	return "", []int{}
 }

@@ -5,3 +5,4 @@
 vendor/*
 15puzzle
 go_build_15puzzle
+solve.txt
