@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 const (
 	WIDTH    = 4
 	SQUARE   = WIDTH * WIDTH
@@ -14,4 +16,16 @@ const (
 func main() {
 	s := generate()
 	s.Show()
+	if s.SolveAble() {
+		fmt.Println("该 puzzle 有解")
+	} else {
+		fmt.Println("该 puzzle 无解")
+		s.Adjust()
+		s.Show()
+		if s.SolveAble() {
+			fmt.Println("该 puzzle 有解了")
+		} else {
+			fmt.Println("该 puzzle 依然无解")
+		}
+	}
 }
