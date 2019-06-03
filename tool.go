@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -31,6 +32,21 @@ func generate() State {
 	return s
 }
 
+func calMhDis() {
+	for i := 0; i < SQUARE; i++ {
+		for j := 0; j < SQUARE; j++ {
+			mhDis[i][j] = abs(i/WIDTH-j/WIDTH) + abs(i%WIDTH-j%WIDTH)
+		}
+	}
+}
+func printMhDis() {
+	for i := 0; i < SQUARE; i++ {
+		for j := 0; j < SQUARE; j++ {
+			fmt.Printf("%v ", mhDis[i][j])
+		}
+		fmt.Printf("\n")
+	}
+}
 func solve(s State) (bool, []int) {
 	if s.Solved() {
 		return true, s.steps[:]

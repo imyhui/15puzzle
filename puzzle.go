@@ -14,9 +14,12 @@ const (
 )
 
 var (
-	mhdis [SQUARE][SQUARE]int
+	mhDis [SQUARE][SQUARE]int
 )
 
+func init() {
+	calMhDis()
+}
 func main() {
 	s := generate()
 	s.Show()

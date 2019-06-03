@@ -96,7 +96,7 @@ func (s State) Score() int {
 
 	for i := 0; i < SQUARE; i++ {
 		if s.board[i] != 0 {
-			mhd += mhdis[s.board[i]-1][i]
+			mhd += mhDis[s.board[i]-1][i]
 		}
 	}
 	return s.depth + 4*mhd/3
