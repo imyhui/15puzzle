@@ -102,7 +102,54 @@ func (s State) Score() int {
 	return s.depth + 4*mhd/3
 }
 
-func (s State) Solution() string {
+// 获取本状态可移动的列表
+func (s State) NextSteps() [4]int {
+	var lastStep int
+	nextSteps := [4]int{}
+	if s.depth > 0 {
+		lastStep = s.steps[s.depth-1]
+	}
 
+	if s.block%WIDTH > 0 && lastStep != RIGHT {
+		nextSteps[0] = LEFT
+	}
+	if s.block%WIDTH < (WIDTH-1) && lastStep != LEFT {
+		nextSteps[1] = RIGHT
+	}
+	if s.block/WIDTH > 0 && lastStep != DOWN {
+		nextSteps[2] = UP
+	}
+	if s.block/WIDTH < (WIDTH-1) && lastStep != UP {
+		nextSteps[3] = DOWN
+	}
+	return nextSteps
+}
+
+// 获取经过step移动后的状态
+func (s State) NextState(step int) State {
+	next := State{
+		steps: s.steps,
+		depth: s.depth + 1,
+		block: s.block + step,
+	}
+	// fixme: 传拷贝 否则会改变原切片
+	next.board = make([]int, 16)
+	copy(next.board, s.board)
+
+	next.steps[s.depth] = step
+	next.board[s.block] = next.board[next.block]
+	next.board[next.block] = 0
+	return next
+}
+
+// 对当前状态求解
+func (s State) Solution() string {
+	var result string
+	if ok, steps := solve(s); ok {
+		for _, step := range steps {
+			result += move[step]
+		}
+		return result
+	}
 	return ""
 }

@@ -4,3 +4,4 @@
 *.sum
 vendor/*
 15puzzle
+go_build_15puzzle
