@@ -12,6 +12,7 @@ func abs(x int) int {
 	return -x
 }
 
+// 生成一个初始状态
 func generate() State {
 	var s State
 	var board []int
@@ -28,4 +29,12 @@ func generate() State {
 	s.board = board
 	s.block = s.Block()
 	return s
+}
+
+func solve(s State) (bool, []int) {
+	if s.Solved() {
+		return true, s.steps[:]
+	}
+
+	return false, []int{}
 }

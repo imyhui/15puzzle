@@ -36,22 +36,21 @@ func (s State) Show() {
 
 // 判断是否可解
 func (s State) SolveAble() bool {
-	var sum, row int
+	var cnt int
+	// 计算逆序数和
 	for i := 0; i < SQUARE; i++ {
 		num := s.board[i]
-		// 记录滑块行号
-		if num == 0 {
-			row = i/WIDTH + 1
-			continue
-		}
-		// 计算逆序数和
-		for j := i; j < SQUARE; j++ {
-			if s.board[j] < num && s.board[j] != 0 {
-				sum++
+		if num != 0 {
+			for j := i; j < SQUARE; j++ {
+				if s.board[j] < num && s.board[j] != 0 {
+					cnt++
+				}
 			}
+		} else {
+			cnt += i/WIDTH + 1
 		}
 	}
-	return (sum+row)%2 == 0
+	return cnt%2 == 0
 }
 
 //判断是否已解
@@ -89,4 +88,21 @@ func (s State) Adjust() {
 		}
 	}
 	s.board[fst], s.board[scd] = s.board[scd], s.board[fst]
+}
+
+// 计算该局面f(n),h(n) 为曼哈顿距离, *4/3 可大幅度缩短时间,但会使解变长
+func (s State) Score() int {
+	mhd := 0
+
+	for i := 0; i < SQUARE; i++ {
+		if s.board[i] != 0 {
+			mhd += mhdis[s.board[i]-1][i]
+		}
+	}
+	return s.depth + 4*mhd/3
+}
+
+func (s State) Solution() string {
+
+	return ""
 }

@@ -13,6 +13,10 @@ const (
 	NONE     = 0
 )
 
+var (
+	mhdis [SQUARE][SQUARE]int
+)
+
 func main() {
 	s := generate()
 	s.Show()
