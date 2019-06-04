@@ -19,8 +19,8 @@ class FifteenPuzzles {
     //每次状态改变调用一次渲染函数
     showDomMove(path) {
         let _ = this
-        path.forEach(function(item, index) {
-            setTimeout(function(node) {
+        path.forEach(function (item, index) {
+            setTimeout(function (node) {
                 this.calDom(node)
             }.bind(_, item), index * _.timer)
         })
@@ -66,8 +66,8 @@ copy = (arr) => {
 }
 
 getZero = (node) => {
-    node.forEach(function(item, i) {
-        item.forEach(function(obj, j) {
+    node.forEach(function (item, i) {
+        item.forEach(function (obj, j) {
             if (obj === 0) {
                 target = { x: i, y: j }
             }
@@ -113,7 +113,7 @@ getBoard = () => {
     var xhr = new XMLHttpRequest();
     xhr.open('get', url, true);
     xhr.send();
-    xhr.onreadystatechange = function(resp) {
+    xhr.onreadystatechange = function (resp) {
         if (xhr.readyState === 4) { // 读取完成
             if (xhr.status === 200) {
                 resp = JSON.parse(xhr.responseText)
@@ -131,7 +131,7 @@ adjust = () => {
     xhr.open('post', url, true);
     xhr.setRequestHeader('content-type', 'application/json'); // 设置 HTTP 头，数据指定为 JSON 格式
     xhr.send(JSON.stringify({ "data": board }));
-    xhr.onreadystatechange = function(resp) {
+    xhr.onreadystatechange = function (resp) {
         if (xhr.readyState === 4) { // 读取完成
             if (xhr.status === 200)
                 resp = JSON.parse(xhr.responseText)
@@ -146,13 +146,14 @@ adjust = () => {
 }
 // 获取结果
 getSolution = () => {
+    loading()
     url = '/solution'
     board = fifteenPuzzles.board
     var xhr = new XMLHttpRequest();
     xhr.open('post', url, true);
     xhr.setRequestHeader('content-type', 'application/json');
     xhr.send(JSON.stringify({ "data": board }));
-    xhr.onreadystatechange = function(resp) {
+    xhr.onreadystatechange = function (resp) {
         if (xhr.readyState === 4) { // 读取完成
             if (xhr.status === 200) {
                 resp = JSON.parse(xhr.responseText)
@@ -162,15 +163,26 @@ getSolution = () => {
                         if (confirm(resp.msg + ",是否调整？")) {
                             adjust()
                         }
+                        loaded()
                         return
                     }
                     alert(resp.msg)
+                    loaded()
                     return
                 }
+                loaded()
                 alert(resp.msg + ",点击开始")
                 fifteenPuzzles.solution = resp.data
                 fifteenPuzzles.solve()
             }
         }
     }
+}
+
+loading = () => {
+    document.getElementById('loading').style.display = "block"
+}
+loaded = () => {
+    document.getElementById('loading').style.display = "none"
+
 }
