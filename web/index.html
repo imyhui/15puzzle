@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>15 Puzzle</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <script type="text/javascript" src="/static/js/puzzle.js"></script>
 
+
+</head>
+
+<body>
+<div class="fifteenPuzzles">
+    <div id="0" class="div">0</div>
+    <div id="1" class="div">1</div>
+    <div id="2" class="div">2</div>
+    <div id="3" class="div">3</div>
+    <div id="4" class="div">4</div>
+    <div id="5" class="div">5</div>
+    <div id="6" class="div">6</div>
+    <div id="7" class="div">7</div>
+    <div id="8" class="div">8</div>
+    <div id="9" class="div">9</div>
+    <div id="10" class="div">10</div>
+    <div id="11" class="div">11</div>
+    <div id="12" class="div">12</div>
+    <div id="13" class="div">13</div>
+    <div id="14" class="div">14</div>
+    <div id="15" class="div">15</div>
+
+</div>
+<div class="center">
+    <button id="generate">随机生成一个局面</button>
+    <button id="solution">获取结果</button>
+
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var option = {
+        animateTime: '300'
+    }
+
+    let fifteenPuzzles = new FifteenPuzzles(option)
+    fifteenPuzzles.calDom(fifteenPuzzles.startNode)
+    bind()
+    setTimeout(() => {
+        $('.div').css({
+            'transition': 'all ' + option.animateTime + 'ms',
+            '-moz-transition': 'all ' + option.animateTime + 'ms', /* Firefox 4 */
+            '-webkit-transition': 'all ' + option.animateTime + 'ms', /* Safari 和 Chrome */
+            '-o-transition': 'all ' + option.animateTime + 'ms' /* Opera */
+        })
+    }, 0)
+</script>
 </body>
+
 </html>

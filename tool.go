@@ -125,6 +125,7 @@ func printSteps(s State, steps []int) {
 
 // 命令行模式
 func runShell() {
+	fmt.Println("正在求解...,详情见solve.txt")
 	writeFile()
 	start := time.Now()
 
@@ -160,6 +161,5 @@ func runShell() {
 
 // 服务端模式
 func runServer() {
-	//todo
-	fmt.Println("Come soon!")
+	server()
 }
