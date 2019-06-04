@@ -13,6 +13,8 @@
 </head>
 
 <body>
+<div class="container">
+    <div class="left"></div>
     <div class="fifteenPuzzles">
         <div id="0" class="div">0</div>
         <div id="1" class="div">1</div>
@@ -32,9 +34,11 @@
         <div id="15" class="div">15</div>
 
     </div>
-    <div class="center">
-        <button id="generate">随机生成一个局面</button>
-        <button id="solution">获取结果</button>
+
+    <div class="right"></div>
+    <div class="operate">
+        <button class="button" id="generate">随机生成一个局面</button>
+        <button class="button" id="solution">获取结果</button>
     </div>
     <div id="loading" hidden>
         <div id="loading-center">
@@ -47,6 +51,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script>
