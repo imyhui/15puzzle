@@ -21,7 +21,7 @@ html, body {
     /* Safari 和 Chrome */
     -o-transition: all 0s;
     /* Opera */
-    background:url(frontpage.png);
+    background:url(/static/pic/background.png);
     background-size:cover;
 
 }
