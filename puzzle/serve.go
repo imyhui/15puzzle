@@ -1,11 +1,9 @@
-package main
+package puzzle
 
 import (
 	"encoding/json"
 	"fmt"
 	"html/template"
-	//"fmt"
-	//"io/ioutil"
 	"log"
 	"net/http"
 )
@@ -17,7 +15,7 @@ type Body struct {
 }
 
 func handlerIndex(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("web/index.html")
+	t, _ := template.ParseFiles("static/html/index.html")
 	err := t.Execute(w, nil)
 	if err != nil {
 		fmt.Println(err)
