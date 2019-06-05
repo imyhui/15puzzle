@@ -117,7 +117,7 @@
 
 ## 参考资料
 
-- [ Go语言圣经（中文版](https://docs.hacknode.org/gopl-zh/)
+- [ Go语言圣经（中文版)](https://docs.hacknode.org/gopl-zh/)
 - [ECMAScript 6 入门](http://es6.ruanyifeng.com/)
 - [Fisher–Yates shuffle](https://en.wikipedia.org/wiki/Fisher–Yates_shuffle)
 - [15数码介绍](http://www.mathematische-basteleien.de/15puzzle.htm)
@@ -129,7 +129,7 @@
 - [《**挑战编程**:程序设计竞赛训练手册》](https://www.baidu.com/s?ie=UTF-8&wd=《挑战编程%3A程序设计竞赛训练手册》) [15puzzle](https://blog.csdn.net/metaphysis/article/details/6560047)
 - [利用JavaScript在网页实现八数码启发式A*算法动画效果的图文代码介绍](http://www.php.cn/js-tutorial-360516.html)
 
-- [30种CSS3炫酷页面预加载loading动画特效]([http://www.htmleaf.com/css3/css3donghua/201504151682.html](http://www.htmleaf.com/css3/css3donghua/201504151682.html))
+- [30种CSS3炫酷页面预加载loading动画特效](http://www.htmleaf.com/css3/css3donghua/201504151682.html)
 - [菜鸟教程CSS](https://www.runoob.com/css/css-tutorial.html)
 
 
