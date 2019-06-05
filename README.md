@@ -21,10 +21,10 @@
 > 15 数码状态空间有16!，采用无信息搜索需要耗费大量时间， A\* 算法需要维护 open 表和 close 表，以及排序选择最小代价的结点内存空间消耗过多，采用 IDA* 既节约时间，又减少空间占用（不用判重）。
 
 - 生成棋盘采用 **Fisher–Yates shuffle** 随机洗牌算法
-- 判断是否可解判断**逆序数**与原来是否相等
-- 调整状态使其可解任意交换两个不为零的数，改变排列逆序数
+- 判断是否可解: 判断**逆序数**与原来是否相等
+- 调整状态使其可解原理: 任意交换两个不为零的数，改变排列逆序数
 - 求解时启发函数采用 `4*曼哈顿距离/3`
-- 后台编程语言为 `golang`，主要逻辑编写，提供接口和命令行模式
+- 后台编程语言为 `golang`，求解逻辑编写，提供接口及命令行模式
 - 前端采用 `js` + `html` + `css`，负责将结果以动画形式呈现
 
 ## 使用方式
@@ -104,11 +104,16 @@
       ![serve.png](doc/pic/serve.png)
 
    - 点击随机生成局面，等待局面完成
-
-   - 点击获取结果，若局面不可解，弹窗提示，可直接调整，重新点击获取结果，或者直接随机生成新局面
+- 点击获取结果
+     - 若局面不可解，弹窗提醒是否调整, 调整后重新点击获取结果即可
+     - 也可直接随机生成新局面, 重新求解
    - 查看结果展示动画
 
+## 线上体验
 
+[线上地址](<http://puzzle.andyhui.top/>)
+
+![example](doc/pic/example.gif)
 
 ## 参考资料
 
@@ -126,3 +131,7 @@
 
 - [30种CSS3炫酷页面预加载loading动画特效]([http://www.htmleaf.com/css3/css3donghua/201504151682.html](http://www.htmleaf.com/css3/css3donghua/201504151682.html))
 - [菜鸟教程CSS](https://www.runoob.com/css/css-tutorial.html)
+
+
+
+Authored by [@imyhui](https://github.com/imyhui/). Maintained by [@imyhui](https://github.com/imyhui/)
